@@ -1,0 +1,13 @@
+<div class="card" [class.done]="tache.is_done">
+  <h3>{{tache.title}}</h3>
+  <p><small>-- {{tache.category}}</small></p>
+  <p>{{tache.description}}</p>
+  <p>
+    <button (click)="sendEvent('done')">
+      {{ tache.is_done? 'Terminée' : 'A faire' }}
+    </button>
+    <button (click)="sendEvent('delete')">
+      Supprimer
+    </button>
+  </p>
+</div>
