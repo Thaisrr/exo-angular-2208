@@ -1,0 +1,51 @@
+<section>
+  <h2>Ajouter une tâche</h2>
+
+  <form (ngSubmit)="saveTodo()" [formGroup]="todo_group">
+    <p>
+      <label for="title">Titre</label>
+      <input id="title" formControlName="title">
+      <span *ngIf="title.touched && title.invalid">
+        <small *ngIf="title.hasError('required')">Veuillez entrer un titre</small>
+        <small *ngIf="title.hasError('minlength') || title.hasError('maxlength')">
+          Le titre doit faire entre 3 et 50 caractères
+        </small>
+      </span>
+    </p>
+    <p>
+      <label for="description">Description</label>
+      <input id="description" formControlName="description">
+    </p>
+    <p>
+      <label for="done">Terminé ?</label>
+      <input id="done" type="checkbox" formControlName="is_done">
+    </p>
+    <!--
+    <p>
+
+      <label for="cat">Catégorie</label>
+
+      <select id="cat" formControlName="category">
+        <option *ngFor="let cat of categories" [value]="cat.value">
+          {{cat.name}}
+        </option>
+      </select>
+    </p>
+     -->
+     <fieldset>
+        <legend>Catégorie</legend>
+
+        <div *ngFor="let cat of categories">
+          <input type="radio" [value]="cat.value" [id]="cat.value" formControlName="category">
+          <label [for]="cat.value">{{cat.name}}</label>
+          <small *ngIf="category.touched && category.invalid">
+            Vous devez choisir une catégorie
+          </small>
+        </div>
+     </fieldset>
+    <p>
+      <button [disabled]="todo_group.invalid">Sauvegarder</button>
+    </p>
+
+  </form>
+</section>

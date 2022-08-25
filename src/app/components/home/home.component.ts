@@ -59,4 +59,9 @@ export class HomeComponent  {
     }
   }
 
+  addTask(task: Task) {
+    task.id = this.tasks.length + 1;
+    this.tasks.push(task);
+  }
+
 }

@@ -1,5 +1,7 @@
 <h1>Ma TODO Liste</h1>
 
+<app-formulaire (new_todo)="addTask($event)"></app-formulaire>
+
 
 <div *ngIf="tasks && tasks.length > 0; else nothingTodo" class="container">
   <app-task *ngFor="let _task of tasks"
